@@ -33,12 +33,14 @@ if output=$(git status --porcelain) && [ -n "$output" ]; then
 fi
 
 # I don't know if these are porcelain commands but we're not parsing output so it should be fine.
-# Run --quiet on spammy, less helpful, commands.
+# Quiet the commands, except push, so the PR URLs stand out. ImageOptim is chatty on stderr too.
 $GIT fetch --quiet $GIT_REMOTE_UPSTREAM &&
         $GIT checkout --quiet $GIT_REMOTE_UPSTREAM/master && \
-        $GIT checkout -b ni-imageoptim-$UUID && \
-        $IMAGE_OPTIM . && \
-        $GIT commit --all --message="No issue: losslessly optimize image assets.
+        $GIT checkout --quiet -b ni-imageoptim-$UUID && \
+        $IMAGE_OPTIM . > /dev/null 2>&1 && \
+        $GIT commit --quiet --all --message="No issue: losslessly optimize image assets.
 
 This process was completed automatically by the android-automation-tools script $SCRIPT_NAME." && \
-        $GIT push --no-verify $GIT_REMOTE_FORK
+        # push prints to stderr so redirect to pipe; grep will filter lines except
+        # "Create a pull request for this URL:" and the actual URL.
+        $GIT push --no-verify $GIT_REMOTE_FORK 2>&1 | grep pull
