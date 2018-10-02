@@ -28,7 +28,7 @@ fi
 
 # via https://unix.stackexchange.com/a/155077
 if output=$(git status --porcelain) && [ -n "$output" ]; then
-    echo "Error: uncommited git changes. Skipping $(basename $(pwd))..." 1>&2
+    echo "Error: uncommited git changes. Skipping $(basename $(pwd))." 1>&2
     exit 1
 fi
 
