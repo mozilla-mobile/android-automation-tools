@@ -6,8 +6,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.2.71"
-    id("java-gradle-plugin")
-    id("maven-publish")
+    `java-gradle-plugin`
+    `maven-publish` // local publishing
+    id("com.gradle.plugin-publish") version "0.10.0" // remote publishing
 }
 
 group = "org.mozilla.apt"
@@ -24,4 +25,21 @@ dependencies {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+pluginBundle {
+    website = "https://github.com/mozilla-mobile/android-automation-tools/blob/master/gradle-plugin/README.md"
+    vcsUrl = "https://github.com/mozilla-mobile/android-automation-tools"
+    tags = listOf("mozilla", "apt", "android")
+}
+
+gradlePlugin {
+    plugins {
+        create("mozillaPlugin") { // this identifier is unused on remote
+            id = "org.mozilla.apt"
+            displayName = "Mozilla APT Plugin"
+            description = "A plugin for the Android Product Team (APT) at Mozilla"
+            implementationClass = "org.mozilla.apt.MozillaPlugin"
+        }
+    }
 }

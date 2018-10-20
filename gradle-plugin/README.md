@@ -1,5 +1,11 @@
 # Android Product Team's Gradle plugin
 
+## Publishing
+To publish the plugin to the gradle plugin portal, first [create credentials][]. After making your changes and bumping the version, run the following from the root directory:
+```gradlew
+./gradlew gradle-plugin:publishPlugins
+```
+
 ## Developing the plugin against local repositories
 Like [the android components suggest][components local], it's preferable to avoid depending on apps outside of the repository. Instead:
 - Write unit tests
@@ -35,3 +41,4 @@ apply plugin: org.mozilla.apt.MozillaPlugin
 If your project already applies the plugin, be sure to remove the other import.
 
 [components local]: https://mozilla-mobile.github.io/android-components/contributing/testing-components-inside-app
+[create credentials]: https://guides.gradle.org/publishing-plugins-to-gradle-plugin-portal/#create_an_account_on_the_gradle_plugin_portal
