@@ -16,11 +16,15 @@ version = "0.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    google()
 }
 
 dependencies {
     compile(kotlin("stdlib-jdk8"))
     compile(gradleApi())
+
+    // Ideally, this version would align with the application versions.
+    implementation("com.android.tools.build:gradle:3.2.0")
 }
 
 tasks.withType<KotlinCompile> {
