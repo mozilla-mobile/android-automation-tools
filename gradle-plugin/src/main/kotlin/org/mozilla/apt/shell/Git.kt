@@ -6,27 +6,6 @@ package org.mozilla.apt.shell
 
 import org.mozilla.apt.ext.execWaitForStdOut
 
-/** Git state retrieved from raw Git commands. */
-class GitAggregates(
-        private val git: Git
-) {
-
-    fun hasUncommittedChanges(): Boolean = !git.status().isBlank()
-
-    /** @return the checked out git tag, or null if there is none */
-    fun getCheckedOutGitTag(): String? {
-        val commandOutput = git.nameRev("--tags", "HEAD").trim() // ends in whitespace.
-
-        // "HEAD undefined" if there is no git tag on HEAD.
-        if (commandOutput.endsWith("undefined")) {
-            return null
-        }
-
-        // "HEAD tags/v1.1" if there is a git tag on HEAD.
-        return commandOutput.split("/")[1]
-    }
-}
-
 /** Raw Git commands. */
 class Git(
         private val runtime: Runtime
