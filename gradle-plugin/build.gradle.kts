@@ -25,6 +25,11 @@ dependencies {
 
     // Ideally, this version would align with the application versions.
     implementation("com.android.tools.build:gradle:3.2.0")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.3.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.3.1")
+    testImplementation("org.mockito:mockito-core:2.23.0")
 }
 
 tasks.withType<KotlinCompile> {
@@ -39,11 +44,16 @@ pluginBundle {
 
 gradlePlugin {
     plugins {
-        create("mozillaPlugin") { // this identifier is unused on remote
+        create("mozillaPlugin") {
+            // this identifier is unused on remote
             id = "org.mozilla.android"
             displayName = "Mozilla Android Plugin"
             description = "A plugin for Android development at Mozilla"
             implementationClass = "org.mozilla.android.MozillaPlugin"
         }
     }
+}
+
+tasks.getByName("test", Test::class).apply {
+    useJUnitPlatform()
 }
