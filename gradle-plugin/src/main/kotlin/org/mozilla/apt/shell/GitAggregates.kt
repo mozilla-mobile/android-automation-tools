@@ -9,6 +9,12 @@ class GitAggregates(
         private val git: Git
 ) {
 
+    /**
+     * Returns whether or not the git repository has uncommitted changes.
+     *
+     * If the underlying parsed command's output is unexpected, we return true, the option more
+     * likely to block: it's too much work to identify valid command output.
+     */
     fun hasUncommittedChanges(): Boolean = !git.status().isBlank()
 
     /** @return the checked out git tag, or null if there is none */
@@ -21,6 +27,6 @@ class GitAggregates(
         }
 
         // "HEAD tags/v1.1" if there is a git tag on HEAD.
-        return commandOutput.split("/")[1]
+        return commandOutput.split("/", limit = 2)[1]
     }
 }
