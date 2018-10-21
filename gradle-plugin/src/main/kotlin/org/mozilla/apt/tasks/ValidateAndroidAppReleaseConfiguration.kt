@@ -6,10 +6,10 @@ package org.mozilla.apt.tasks
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
+import org.mozilla.apt.ServiceLocator
 import org.mozilla.apt.ext.androidDSLOrThrow
 import org.mozilla.apt.ext.getAssembleReleaseTasks
 import org.mozilla.apt.ext.getCompileReleaseTasks
-import org.mozilla.apt.shell.GitAggregates
 
 /**
  * Validates that an Android app is correctly configured for release. When created, this
@@ -23,6 +23,9 @@ import org.mozilla.apt.shell.GitAggregates
  * For a list of current checks, see [validateAndroidAppRelease].
  */
 open class ValidateAndroidAppReleaseConfiguration : DefaultTask() {
+
+    private val gitAggregates = ServiceLocator.INSTANCE.gitAggregates
+
     init {
         group = "Verification"
         description = "Validates an Android app is correctly configured for release"
@@ -48,7 +51,7 @@ open class ValidateAndroidAppReleaseConfiguration : DefaultTask() {
     }
 
     private fun validateNoUncommittedChanges() {
-        if (GitAggregates.hasUncommittedChanges()) {
+        if (gitAggregates.hasUncommittedChanges()) {
             throw IllegalStateException("Unable to build release builds with uncommitted changes")
         }
     }
@@ -59,7 +62,7 @@ open class ValidateAndroidAppReleaseConfiguration : DefaultTask() {
     private fun validateBuildVersionIsGitTagVersion() {
         fun getGitTagVersionName(): String {
             // Expected: "v1.1"
-            val gitTag = GitAggregates.getCheckedOutGitTag()
+            val gitTag = gitAggregates.getCheckedOutGitTag()
                     ?: throw IllegalStateException("Expected top-most commit to have a git tag")
             if (gitTag.getOrNull(0) != 'v') {
                 throw IllegalStateException("Expected git tag to be a version, e.g. 'v1.1'")

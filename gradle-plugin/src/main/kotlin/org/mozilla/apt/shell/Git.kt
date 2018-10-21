@@ -7,13 +7,15 @@ package org.mozilla.apt.shell
 import org.mozilla.apt.ext.execWaitForStdOut
 
 /** Git state retrieved from raw Git commands. */
-object GitAggregates {
+class GitAggregates(
+        private val git: Git
+) {
 
-    fun hasUncommittedChanges(): Boolean = !Git.status().isBlank()
+    fun hasUncommittedChanges(): Boolean = !git.status().isBlank()
 
     /** @return the checked out git tag, or null if there is none */
     fun getCheckedOutGitTag(): String? {
-        val commandOutput = Git.nameRev("--tags", "HEAD").trim() // ends in whitespace.
+        val commandOutput = git.nameRev("--tags", "HEAD").trim() // ends in whitespace.
 
         // "HEAD undefined" if there is no git tag on HEAD.
         if (commandOutput.endsWith("undefined")) {
@@ -26,9 +28,9 @@ object GitAggregates {
 }
 
 /** Raw Git commands. */
-object Git {
-    private val runtime: Runtime
-        get() = Runtime.getRuntime()
+class Git(
+        private val runtime: Runtime
+) {
 
     fun status(): String = runtime.execWaitForStdOut("git status --porcelain")
 
