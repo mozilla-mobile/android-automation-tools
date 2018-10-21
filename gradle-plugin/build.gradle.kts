@@ -20,8 +20,8 @@ repositories {
 }
 
 dependencies {
-    compile(kotlin("stdlib-jdk8"))
-    compile(gradleApi())
+    implementation(kotlin("stdlib-jdk8"))
+    implementation(gradleApi())
 
     // Ideally, this version would align with the application versions.
     implementation("com.android.tools.build:gradle:3.2.0")
