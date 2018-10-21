@@ -4,9 +4,23 @@
 
 package org.mozilla.apt.ext
 
-fun Runtime.execWaitForStdOut(cmd: String): String {
-    return Runtime.getRuntime().exec(cmd).let { process ->
+import java.lang.IllegalStateException
+
+/**
+ * Executes the given command, returning the standard output. Standard output is not printed to the
+ * terminal; standard error is entirely ignored.
+ *
+ * @throws IllegalStateException when the command exits with a non-zero value
+ */
+internal fun Runtime.execWaitForStdOut(cmd: String): String {
+    fun Process.assertNoError() {
+        // We could check standard error too, but this is probably good enough.
+        if (exitValue() != 0) throw IllegalStateException("Runtime exited with non-zero value")
+    }
+
+    return exec(cmd).let { process ->
         process.waitFor()
+        process.assertNoError()
         process.inputStream.bufferedReader().use { it.readText() }
     }
 }
