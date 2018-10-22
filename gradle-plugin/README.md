@@ -6,6 +6,20 @@ To publish the plugin to the gradle plugin portal, first [create credentials][].
 ./gradlew gradle-plugin:publishPlugins
 ```
 
+## Tasks
+The following tasks can be imported from `org.mozilla.apt.tasks` (click the links for more details):
+- [`ValidateAndroidAppReleaseConfiguration`][validate]: runs validation on `assembleRelease` such as ensuring there are no uncommitted changes and there is a checked out git tag
+
+### Adding a task to your project
+After applying the plugin, you can apply a task, like `ValidateAndroidAppReleaseConfiguration`, by:
+```groovy
+import org.mozilla.apt.tasks.*
+
+task taskName(type: ValidateAndroidAppReleaseConfiguration) {
+    // Configure the task...
+}
+```
+
 ## Developing the plugin against local repositories
 Like [the android components suggest][components local], it's preferable to avoid depending on apps outside of the repository. Instead:
 - Write unit tests
@@ -53,3 +67,4 @@ If your project applies the plugin from a remote maven repository, be sure to re
 
 [components local]: https://mozilla-mobile.github.io/android-components/contributing/testing-components-inside-app
 [create credentials]: https://guides.gradle.org/publishing-plugins-to-gradle-plugin-portal/#create_an_account_on_the_gradle_plugin_portal
+[validate]: https://github.com/mozilla-mobile/android-automation-tools/blob/master/gradle-plugin/src/main/kotlin/org/mozilla/apt/tasks/ValidateAndroidAppReleaseConfiguration.kt
