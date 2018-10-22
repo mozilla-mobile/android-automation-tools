@@ -16,7 +16,7 @@ import org.mozilla.apt.shell.GitAggregates
  * framework in gradle sounds unnecessarily complicated (if not impossible) so we use a service
  * locator.
  */
-open class ServiceLocator {
+internal open class ServiceLocator {
 
     open val git by lazy { Git(Runtime.getRuntime()) }
     open val gitAggregates by lazy { GitAggregates(git) }

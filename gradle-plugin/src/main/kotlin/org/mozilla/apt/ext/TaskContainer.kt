@@ -7,10 +7,10 @@ package org.mozilla.apt.ext
 import org.gradle.api.Task
 import org.gradle.api.tasks.TaskContainer
 
-fun TaskContainer.getAssembleReleaseTasks(): List<Task> = filter { task -> task.name.let {
+internal fun TaskContainer.getAssembleReleaseTasks(): List<Task> = filter { task -> task.name.let {
     it.startsWith("assemble") && it.endsWith("Release")
 } }
 
-fun TaskContainer.getCompileReleaseTasks(): List<Task> = filter { task -> task.name.let {
+internal fun TaskContainer.getCompileReleaseTasks(): List<Task> = filter { task -> task.name.let {
     it.startsWith("compile") && it.endsWith("ReleaseSources")
 } }

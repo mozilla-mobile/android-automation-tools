@@ -7,7 +7,7 @@ package org.mozilla.apt.ext
 import com.android.build.gradle.AppPlugin
 import org.gradle.api.Project
 
-fun Project.androidDSLOrThrow(): AppPlugin {
+internal fun Project.androidDSLOrThrow(): AppPlugin {
     return plugins.findPlugin("android") as? AppPlugin
             ?: throw IllegalStateException("Android plugin must be applied")
 }

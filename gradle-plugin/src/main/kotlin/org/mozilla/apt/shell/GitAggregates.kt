@@ -5,7 +5,7 @@
 package org.mozilla.apt.shell
 
 /** Git state retrieved from raw Git commands. */
-class GitAggregates(
+internal class GitAggregates(
         private val git: Git
 ) {
 

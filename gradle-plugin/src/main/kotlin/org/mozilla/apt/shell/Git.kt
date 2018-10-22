@@ -7,7 +7,7 @@ package org.mozilla.apt.shell
 import org.mozilla.apt.ext.execWaitForStdOut
 
 /** Raw Git commands. */
-class Git(
+internal class Git(
         private val runtime: Runtime
 ) {
 
