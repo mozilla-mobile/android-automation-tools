@@ -23,7 +23,7 @@ To publish the gradle plugin:
 ```
 
 ### Import your local plugin changes into the local repository
-You'll have to add the dependencies (using your own version number):
+In the top level gradle file, you have to add the dependencies (using your own version number):
 ```groovy
 buildscript {
     repositories {
@@ -38,7 +38,18 @@ buildscript {
 apply plugin: org.mozilla.android.MozillaPlugin
 ```
 
-If your project already applies the plugin, be sure to remove the other import.
+And again in `buildSrc/build.gradle`:
+```groovy
+repositories {
+    mavenLocal()
+}
+
+dependencies {
+    implementation("org.mozilla.apt:gradle-plugin:0.1-SNAPSHOT")
+}
+```
+
+If your project applies the plugin from a remote maven repository, be sure to remove that application.
 
 [components local]: https://mozilla-mobile.github.io/android-components/contributing/testing-components-inside-app
 [create credentials]: https://guides.gradle.org/publishing-plugins-to-gradle-plugin-portal/#create_an_account_on_the_gradle_plugin_portal
