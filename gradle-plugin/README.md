@@ -31,11 +31,11 @@ buildscript {
     }
 
     dependencies {
-        classpath "org.mozilla.apt:gradle-plugin:0.1-SNAPSHOT"
+        classpath "org.mozilla.android:gradle-plugin:0.1-SNAPSHOT"
     }
 }
 
-apply plugin: org.mozilla.apt.MozillaPlugin
+apply plugin: org.mozilla.android.MozillaPlugin
 ```
 
 If your project already applies the plugin, be sure to remove the other import.

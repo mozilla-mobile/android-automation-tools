@@ -11,7 +11,7 @@ plugins {
     id("com.gradle.plugin-publish") version "0.10.0" // remote publishing
 }
 
-group = "org.mozilla.apt"
+group = "org.mozilla.android"
 version = "0.1-SNAPSHOT"
 
 repositories {
@@ -30,16 +30,16 @@ tasks.withType<KotlinCompile> {
 pluginBundle {
     website = "https://github.com/mozilla-mobile/android-automation-tools/blob/master/gradle-plugin/README.md"
     vcsUrl = "https://github.com/mozilla-mobile/android-automation-tools"
-    tags = listOf("mozilla", "apt", "android")
+    tags = listOf("mozilla", "android")
 }
 
 gradlePlugin {
     plugins {
         create("mozillaPlugin") { // this identifier is unused on remote
-            id = "org.mozilla.apt"
-            displayName = "Mozilla APT Plugin"
-            description = "A plugin for the Android Product Team (APT) at Mozilla"
-            implementationClass = "org.mozilla.apt.MozillaPlugin"
+            id = "org.mozilla.android"
+            displayName = "Mozilla Android Plugin"
+            description = "A plugin for Android development at Mozilla"
+            implementationClass = "org.mozilla.android.MozillaPlugin"
         }
     }
 }
