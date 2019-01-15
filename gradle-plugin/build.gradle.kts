@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "org.mozilla.android"
-version = "0.1-SNAPSHOT"
+version = "0.1"
 
 repositories {
     mavenCentral()
