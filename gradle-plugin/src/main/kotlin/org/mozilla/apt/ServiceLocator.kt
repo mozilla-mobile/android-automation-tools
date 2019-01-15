@@ -4,7 +4,6 @@
 
 package org.mozilla.apt
 
-import com.google.common.annotations.VisibleForTesting
 import org.mozilla.apt.shell.Git
 import org.mozilla.apt.shell.GitAggregates
 
@@ -21,7 +20,7 @@ internal open class ServiceLocator {
     open val git by lazy { Git(Runtime.getRuntime()) }
     open val gitAggregates by lazy { GitAggregates(git) }
 
-    @VisibleForTesting protected fun overrideInstance(instance: ServiceLocator) {
+    /* @VisibleForTesting(otherwise = NONE) */ protected fun overrideInstance(instance: ServiceLocator) {
         INSTANCE = instance
     }
 
