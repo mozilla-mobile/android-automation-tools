@@ -2,10 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-package org.mozilla.apt
+package org.mozilla.android
 
-import org.mozilla.apt.shell.Git
-import org.mozilla.apt.shell.GitAggregates
+import org.mozilla.android.shell.Git
+import org.mozilla.android.shell.GitAggregates
 
 /**
  * A container for dependencies following the service locator pattern.

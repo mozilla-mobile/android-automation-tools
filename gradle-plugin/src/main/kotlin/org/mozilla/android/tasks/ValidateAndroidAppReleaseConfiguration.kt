@@ -2,14 +2,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-package org.mozilla.apt.tasks
+package org.mozilla.android.tasks
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
-import org.mozilla.apt.ServiceLocator
-import org.mozilla.apt.ext.androidDSLOrThrow
-import org.mozilla.apt.ext.getAssembleReleaseTasks
-import org.mozilla.apt.ext.getCompileReleaseTasks
+import org.mozilla.android.ServiceLocator
+import org.mozilla.android.ext.androidDSLOrThrow
+import org.mozilla.android.ext.getAssembleReleaseTasks
+import org.mozilla.android.ext.getCompileReleaseTasks
 
 /**
  * Validates that an Android app is correctly configured for release. When created, this

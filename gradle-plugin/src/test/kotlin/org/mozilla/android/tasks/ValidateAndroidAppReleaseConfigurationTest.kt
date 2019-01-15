@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-package org.mozilla.apt.tasks
+package org.mozilla.android.tasks
 
 import com.android.build.gradle.AppPlugin
 import org.gradle.api.Project
@@ -14,8 +14,8 @@ import org.junit.jupiter.api.assertThrows
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
-import org.mozilla.apt.TestServiceLocator
-import org.mozilla.apt.shell.GitAggregates
+import org.mozilla.android.TestServiceLocator
+import org.mozilla.android.shell.GitAggregates
 
 // Missing tests:
 // - Task is added to dependency graphs

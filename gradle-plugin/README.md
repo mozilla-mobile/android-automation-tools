@@ -7,13 +7,13 @@ To publish the plugin to the gradle plugin portal, first [create credentials][].
 ```
 
 ## Tasks
-The following tasks can be imported from `org.mozilla.apt.tasks` (click the links for more details):
+The following tasks can be imported from `org.mozilla.android.tasks` (click the links for more details):
 - [`ValidateAndroidAppReleaseConfiguration`][validate]: runs validation on `assembleRelease` such as ensuring there are no uncommitted changes and there is a checked out git tag
 
 ### Adding a task to your project
 After applying the plugin, you can apply a task, like `ValidateAndroidAppReleaseConfiguration`, by:
 ```groovy
-import org.mozilla.apt.tasks.*
+import org.mozilla.android.tasks.*
 
 task taskName(type: ValidateAndroidAppReleaseConfiguration) {
     // Configure the task...
@@ -59,7 +59,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.mozilla.apt:gradle-plugin:0.1-SNAPSHOT")
+    implementation("org.mozilla.android:gradle-plugin:0.1-SNAPSHOT")
 }
 ```
 

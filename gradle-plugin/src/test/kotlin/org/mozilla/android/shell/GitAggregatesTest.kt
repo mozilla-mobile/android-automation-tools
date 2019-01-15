@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-package org.mozilla.apt.shell
+package org.mozilla.android.shell
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
-import org.mozilla.apt.anyNonNull
+import org.mozilla.android.anyNonNull
 
 internal class GitAggregatesTest {
 
