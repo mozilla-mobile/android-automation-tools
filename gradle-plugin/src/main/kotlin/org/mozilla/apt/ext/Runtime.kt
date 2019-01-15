@@ -15,7 +15,7 @@ import java.lang.IllegalStateException
 internal fun Runtime.execWaitForStdOut(cmd: String): String {
     fun Process.assertNoError() {
         // We could check standard error too, but this is probably good enough.
-        if (exitValue() != 0) throw IllegalStateException("Runtime exited with non-zero value")
+        if (exitValue() != 0) throw IllegalStateException("Runtime exited with non-zero value: ${exitValue()}")
     }
 
     return exec(cmd).let { process ->
