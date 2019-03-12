@@ -3,9 +3,10 @@ The [`org.mozilla.android` gradle plugin, hosted on plugins.gradle.org][plugins]
 
 ## Using the plugin
 To use the plugin, you must first apply it and then configure specific tasks
-you want to run. To apply the plugin, use the legacy plugin application method:
+you want to run. To apply the plugin, use the legacy plugin application method.
+
+In `<project-root>/build.gradle`:
 ```groovy
-// <project-root>/build.gradle
 buildscript {
   repositories {
     maven {
@@ -16,8 +17,10 @@ buildscript {
     classpath "org.mozilla.android:gradle-plugin:0.1"
   }
 }
+```
 
-// in the module to use the plugin, e.g. <project-root>/app/build.gradle
+In the module to use the plugin, e.g. `<project-root>/app/build.gradle`:
+```groovy
 apply plugin: "org.mozilla.android"
 ```
 
