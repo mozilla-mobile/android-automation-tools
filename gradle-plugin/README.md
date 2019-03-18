@@ -14,7 +14,7 @@ buildscript {
     }
   }
   dependencies {
-    classpath "org.mozilla.android:gradle-plugin:0.1"
+    classpath "org.mozilla.android:gradle-plugin:0.2"
   }
 }
 ```
@@ -30,6 +30,10 @@ Applying the plugin via the modern plugins DSL syntax is currently broken
 ### Tasks
 The following tasks can be imported from `org.mozilla.android.tasks` (click the links for more details):
 - [`ValidateAndroidAppReleaseConfiguration`][validate]: runs validation on `assembleRelease` such as ensuring there are no uncommitted changes and there is a checked out git tag
+
+### Repository injection
+Application of this plugin to a project will inject shared Mozilla repositories. Currently injected repositories are:
+- `appservices`: `https://dl.bintray.com/ncalexander/application-services`
 
 #### Adding a task to your project
 After applying the plugin, you can apply a task, like `ValidateAndroidAppReleaseConfiguration`, by:

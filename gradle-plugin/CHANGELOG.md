@@ -6,7 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
-- Upgrade `com.android.tools.build:gradle` plugin to v3.3.2 (#41)
+
+## [0.2] - 2019-03-18
+### Added
+* Injection of custom maven repository named "appservices" for consumers of `application-services`.
+
+### Changed
+* Upgrade `com.android.tools.build:gradle` plugin to v3.3.2 (#41)
 
 ## [0.1] - 2019-01-15
 *Initial release.*
